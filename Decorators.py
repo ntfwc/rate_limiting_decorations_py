@@ -20,7 +20,7 @@
 
 from threading import Lock as ThreadingLock
 
-#function lock for applications using threading
+#Function lock for applications using threading
 def functionLock_threading(f):
 	lock = ThreadingLock()
 	def wrapper(*args, **kargs):
@@ -33,7 +33,7 @@ def functionLock_threading(f):
 
 from multiprocessing import Lock as MultiProcessingLock
 
-#function lock for applications using multiprocessing
+#Function lock for applications using multiprocessing
 #def functionLock_multiprocessing(f):
 	#lock = MultiProcessingLock()
 	#def wrapper(*args, **kargs):
@@ -46,7 +46,7 @@ from multiprocessing import Lock as MultiProcessingLock
 
 from time import time,sleep
 
-#synchronous non-thread-safe function rate-limiting
+#Synchronous non-thread-safe function rate-limiting
 def rateLimit(minSecondsBetweenCalls):
 	lastTimeCalledContainer=[0.0]
 	def decorator(f):
@@ -61,7 +61,7 @@ def rateLimit(minSecondsBetweenCalls):
 		return wrapper
 	return decorator
 
-#Function global Rate-limiting for applications using threading
+#Function global rate-limiting for applications using threading
 def rateLimit_threadingLock(minSecondsBetweenCalls):
 	def decorator(f):
 		@functionLock_threading
@@ -74,7 +74,7 @@ def rateLimit_threadingLock(minSecondsBetweenCalls):
 from multiprocessing import Value
 
 
-#Function global Rate-limiting for applications using multiprocessing
+#Function global rate-limiting for applications using multiprocessing
 def rateLimit_multiprocessingLock(minSecondsBetweenCalls):
 	lock = MultiProcessingLock()
 	lastTimeCalledContainer = Value('d')
