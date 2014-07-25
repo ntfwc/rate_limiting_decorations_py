@@ -47,4 +47,5 @@ def main():
 	t2.start()
 	t3.start()
 
-main()
+if __name__ == "__main__":
+	main()
